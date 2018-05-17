@@ -1,0 +1,39 @@
+<div class = 'main'>
+  <h1>Submit a movie and your review</h1>
+  <form (submit) = "onSubmit(myform.value)" #myform='ngForm' style = "text-align: center;">
+    <div class="form-group">
+      <label for="title"><h4>Movie Title</h4></label>
+      <input type="text" name="title" [(ngModel)]='movie.title' #title="ngModel" required minlength="3">
+      <br>
+      <div class="red" *ngIf="title.errors && title.dirty">*Required! Min length is 3.</div>
+    </div>
+    <div class="form-group">
+      <label for="username"><h4>Your name</h4></label>
+      <input type="text" name="username" [(ngModel)]='review.userName' #userName="ngModel" required minlength="3">
+      <br>
+      <div class="red" *ngIf="userName.errors && userName.dirty">*Required! Min length is 3.</div>
+    </div>
+    <div class="form-group">
+      <label for="stars"><h4>Stars</h4></label>
+      <select name="stars" class ="drop" [(ngModel)]='review.rating' #rating="ngModel" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <br>
+      <div class="red" *ngIf="rating.errors">*Required! The rating should be selected!</div>
+    </div>
+
+    <div class="form-group">
+      <label for="review"><h4>Your review</h4></label>
+      <br>
+      <textarea name="review" cols="60" rows="10" [(ngModel)]='review.text' #review="ngModel" required minlength="3"></textarea>
+      <br>
+      <div class="red" *ngIf="review.errors && review.dirty">*Required! Min length is 3.</div>
+    </div>
+    <button [disabled] = "!myform.valid" class="btn1">Submit</button>
+    <button [routerLink]="['/movies']"  class="btn2">Cancel</button>
+  </form>
+</div>

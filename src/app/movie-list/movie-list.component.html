@@ -1,0 +1,21 @@
+<div class = 'main'>
+  <h2 class="cl1">Movie List</h2>
+  <button [routerLink]="['/movies/add/new']" class="float-right cl1 button1">Add a new movie</button>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-light table-dark">
+      <tr>
+        <th><h4>Movie title</h4></th>
+        <th><h4>Available Actions</h4></th>
+      </tr>
+    </thead>
+    <tbody style = "text-align: center;">
+      <tr *ngFor = "let key of data">
+        <td><h4>{{ key.title }}</h4></td>
+        <td>
+          <button [routerLink]="['/movies', key._id]" class="button2">Read reviews</button>
+          <button [routerLink]="['review/', key._id]" class="button1">Write reviews</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
